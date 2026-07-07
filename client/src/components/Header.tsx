@@ -18,7 +18,7 @@ export default function Header() {
             href="#top"
             className="text-lg font-medium tracking-tighter"
           >
-            <span className="text-[#EA580C]">M</span>öble Planejados
+            <span className="text-[#EA580C]">M</span>öble Marcenaria
           </a>
           <div className="hidden gap-6 text-sm font-medium text-zinc-500 md:flex">
             {navItems.map((item) => (
