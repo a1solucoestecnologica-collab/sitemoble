@@ -171,8 +171,8 @@ export default function Home() {
               </div>
               <div className="flex flex-col gap-6">
                 <img
-                  src="/images/detail-joinery.png"
-                  alt="Detalhe de encaixe de gaveta em madeira"
+                  src="/images/detail-mdf.png"
+                  alt="Detalhe de gaveta em MDF 18mm com corrediça metálica"
                   width={600}
                   height={600}
                   loading="lazy"
@@ -185,7 +185,7 @@ export default function Home() {
                   <ul className="mt-4 space-y-3">
                     <li className="flex justify-between text-xs">
                       <span className="text-zinc-500">Estrutura</span>
-                      <span className="font-medium">MDF Hidrófugo 18mm</span>
+                      <span className="font-medium">MDF 18mm</span>
                     </li>
                     <li className="flex justify-between text-xs">
                       <span className="text-zinc-500">Acabamento</span>
