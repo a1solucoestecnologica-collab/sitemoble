@@ -60,7 +60,11 @@ export default function Home() {
               </div>
 
               <h1 className="mb-8 text-5xl font-medium leading-none tracking-tight text-balance lg:text-7xl">
-                A forma segue a <span className="italic">precisão</span>.
+                A forma segue a{' '}
+                <span className="italic underline decoration-[#EA580C] decoration-2 underline-offset-[6px]">
+                  precisão
+                </span>
+                .
               </h1>
 
               <p className="max-w-[48ch] text-lg leading-relaxed text-pretty text-zinc-600">

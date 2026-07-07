@@ -11,7 +11,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 z-50 w-full border-b border-zinc-900/5 bg-background/80 backdrop-blur-md">
+    <nav className="fixed top-0 z-50 w-full border-t-2 border-t-[#EA580C] border-b border-b-zinc-900/5 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <div className="flex items-center gap-8">
           <a
