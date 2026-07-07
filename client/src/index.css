@@ -230,4 +230,38 @@
   .card-refined {
     @apply bg-background border border-border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow;
   }
+
+  /* Fonte elegante para destaques (letreiro de ambientes) */
+  .font-elegant {
+    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  }
+}
+
+/* =========================================================================
+   Marquee (letreiro rolando) — usado na seção de ambientes
+   ========================================================================= */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: inline-flex;
+  width: max-content;
+  animation: marquee-scroll 40s linear infinite;
+  will-change: transform;
+}
+
+.marquee-viewport:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }

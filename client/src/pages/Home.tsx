@@ -6,6 +6,15 @@ import { Button } from '@/components/ui/button';
 import { MessageCircle, Mail, Phone } from 'lucide-react';
 import { whatsappLink, mailtoLink, telLink, CITY, ADDRESS, CONTACT_PHONE, GOOGLE_MAPS_URL } from '@/config';
 
+const ambientes = [
+  { num: '01', label: 'Cozinhas' },
+  { num: '02', label: 'Dormitórios' },
+  { num: '03', label: 'Home Office' },
+  { num: '04', label: 'Banheiros' },
+  { num: '05', label: 'Closets' },
+  { num: '06', label: 'Living' },
+];
+
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -67,29 +76,36 @@ export default function Home() {
 
       <Divider />
 
-      {/* Categories Section */}
-      <section id="ambientes" className="bg-foreground text-background py-12 md:py-16">
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-4 md:gap-6">
-            {[
-              { num: '01', label: 'Cozinhas' },
-              { num: '02', label: 'Dormitórios' },
-              { num: '03', label: 'Home Office' },
-              { num: '04', label: 'Banheiros' },
-              { num: '05', label: 'Closets' },
-              { num: '06', label: 'Living' },
-            ].map((cat) => (
+      {/* Categories Section — letreiro rolando */}
+      <section id="ambientes" className="bg-foreground text-background py-14 md:py-20 overflow-hidden">
+        <div className="container mb-8 md:mb-10">
+          <p className="text-xs uppercase tracking-[0.3em] text-background/60 text-center">
+            Ambientes que projetamos
+          </p>
+        </div>
+
+        <div className="marquee-viewport relative">
+          {/* Bordas com fade para elegância */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-32 z-10 bg-gradient-to-r from-foreground to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-32 z-10 bg-gradient-to-l from-foreground to-transparent" />
+
+          <div className="marquee-track">
+            {[...ambientes, ...ambientes].map((cat, i) => (
               <button
-                key={cat.num}
+                key={`${cat.label}-${i}`}
                 onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group p-6 border border-background/20 rounded-lg hover:bg-background/10 hover:border-background/40 transition-all active:scale-95 cursor-pointer"
+                className="group flex items-baseline gap-3 md:gap-5 whitespace-nowrap px-8 md:px-12 py-2"
+                aria-label={`Ver projetos de ${cat.label}`}
               >
-                <p className="text-xs uppercase tracking-widest opacity-70 mb-2">
+                <span className="font-elegant italic text-xl md:text-3xl text-[#d4af37]">
                   {cat.num}
-                </p>
-                <p className="font-semibold group-hover:opacity-100 transition-opacity">
+                </span>
+                <span className="font-elegant text-4xl md:text-6xl tracking-wide text-background transition-colors duration-300 group-hover:text-[#d4af37]">
                   {cat.label}
-                </p>
+                </span>
+                <span className="font-elegant text-3xl md:text-5xl text-background/25 pl-3 md:pl-6">
+                  /
+                </span>
               </button>
             ))}
           </div>
