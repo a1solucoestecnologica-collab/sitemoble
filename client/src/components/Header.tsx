@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { BUSINESS_SHORT_NAME } from '@/config';
 
 const navItems = [
   { label: 'Ambientes', href: '#ambientes' },
@@ -19,7 +18,7 @@ export default function Header() {
             href="#top"
             className="text-lg font-medium tracking-tighter"
           >
-            {BUSINESS_SHORT_NAME}
+            Moble Planejados
           </a>
           <div className="hidden gap-6 text-sm font-medium text-zinc-500 md:flex">
             {navItems.map((item) => (
