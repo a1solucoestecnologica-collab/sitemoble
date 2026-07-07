@@ -53,8 +53,8 @@ export default function Home() {
             <div className="py-16 pr-0 md:py-24 lg:col-span-7 lg:border-r lg:border-zinc-900/5 lg:pr-12">
               <div className="mb-8 inline-flex items-center gap-2 rounded bg-zinc-100 px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-zinc-500">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-zinc-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-zinc-500" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#EA580C] opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#EA580C]" />
                 </span>
                 Engenharia de Interiores
               </div>
@@ -143,7 +143,7 @@ export default function Home() {
               <div className="lg:text-right">
                 <a
                   href="#contato"
-                  className="inline-flex items-center gap-2 border-b border-zinc-900/20 pb-1 text-sm font-medium transition-colors hover:border-zinc-900"
+                  className="inline-flex items-center gap-2 border-b border-zinc-900/20 pb-1 text-sm font-medium transition-colors hover:border-[#EA580C] hover:text-[#EA580C]"
                 >
                   Ver projeto completo
                   <svg

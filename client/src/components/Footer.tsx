@@ -23,7 +23,7 @@ export default function Footer() {
               href={SOCIAL.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-zinc-900"
+              className="transition-colors hover:text-[#EA580C]"
             >
               Instagram
             </a>
@@ -32,11 +32,11 @@ export default function Footer() {
             href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-zinc-900"
+            className="transition-colors hover:text-[#EA580C]"
           >
             WhatsApp
           </a>
-          <a href={mailtoLink()} className="hover:text-zinc-900">
+          <a href={mailtoLink()} className="transition-colors hover:text-[#EA580C]">
             E-mail
           </a>
         </div>
