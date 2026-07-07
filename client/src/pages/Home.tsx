@@ -106,21 +106,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Ambientes — faixa estreita com scroll horizontal */}
-        <section id="ambientes" className="bg-zinc-900 py-12 text-zinc-100">
-          <div className="no-scrollbar mx-auto max-w-7xl overflow-x-auto px-6">
-            <div className="flex min-w-max items-center gap-16">
-              {ambientes.map((a) => (
+        {/* Ambientes — letreiro rolando (compacto) */}
+        <section id="ambientes" className="overflow-hidden bg-zinc-900 py-12 text-zinc-100">
+          <div className="marquee-viewport relative">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-zinc-900 to-transparent md:w-32" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-zinc-900 to-transparent md:w-32" />
+            <div className="marquee-track">
+              {[...ambientes, ...ambientes].map((a, i) => (
                 <a
-                  key={a.n}
+                  key={`${a.nome}-${i}`}
                   href="#portfolio"
-                  className="group flex items-center gap-4"
+                  className="group flex items-baseline gap-3 whitespace-nowrap px-6 md:px-8"
                 >
-                  <span className="font-mono text-xs tracking-tighter text-zinc-600">
+                  <span className="font-elegant text-sm italic text-[#c9a227] md:text-base">
                     {a.n}
                   </span>
-                  <span className="text-xl font-medium text-zinc-400 transition-colors group-hover:text-white">
+                  <span className="font-elegant text-2xl tracking-wide text-zinc-200 transition-colors duration-300 group-hover:text-[#d4af37] md:text-3xl">
                     {a.nome}
+                  </span>
+                  <span className="font-elegant pl-3 text-xl text-zinc-700 md:pl-5 md:text-2xl">
+                    /
                   </span>
                 </a>
               ))}
