@@ -1,98 +1,72 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { BUSINESS_SHORT_NAME } from '@/config';
 
+const navItems = [
+  { label: 'Ambientes', href: '#ambientes' },
+  { label: 'Processo', href: '#processo' },
+  { label: 'Portfólio', href: '#portfolio' },
+];
+
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navItems = [
-    { label: 'Ambientes', href: '#ambientes' },
-    { label: 'Processo', href: '#processo' },
-    { label: 'Portfólio', href: '#portfolio' },
-    { label: 'Solicitar Orçamento', href: '#contato', highlight: true },
-  ];
+  const [open, setOpen] = useState(false);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-background/98 backdrop-blur-md border-b border-border shadow-md'
-          : 'bg-background/95 backdrop-blur-sm border-b border-border'
-      }`}
-    >
-      <div className="container flex items-center justify-between h-20">
-        {/* Logo */}
-        <a
-          href="#top"
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          className="flex items-center gap-2 font-bold text-xl hover:opacity-70 transition-opacity"
-        >
-          <div className="w-8 h-8 bg-foreground rounded-sm flex items-center justify-center">
-            <span className="text-background text-sm font-bold">M</span>
-          </div>
-          <span className="hidden sm:inline">{BUSINESS_SHORT_NAME}</span>
-        </a>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className={`text-sm font-medium transition-all ${
-                item.highlight
-                  ? 'bg-foreground text-background px-4 py-2 rounded-sm hover:bg-foreground/90 hover:shadow-md active:scale-95'
-                  : 'text-foreground hover:opacity-70 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-foreground after:transition-all hover:after:w-full'
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 hover:opacity-70 transition-opacity"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <nav className="md:hidden border-t border-border bg-background animate-in slide-in-from-top-2 duration-200">
-          <div className="container py-4 flex flex-col gap-4">
+    <nav className="fixed top-0 z-50 w-full border-b border-zinc-900/5 bg-background/80 backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+        <div className="flex items-center gap-8">
+          <a
+            href="#top"
+            className="text-lg font-medium tracking-tighter"
+          >
+            {BUSINESS_SHORT_NAME}
+          </a>
+          <div className="hidden gap-6 text-sm font-medium text-zinc-500 md:flex">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className={`text-sm font-medium transition-all ${
-                  item.highlight
-                    ? 'bg-foreground text-background px-4 py-2 rounded-sm hover:bg-foreground/90 active:scale-95 block'
-                    : 'text-foreground hover:opacity-70'
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
+                className="transition-colors hover:text-foreground"
               >
                 {item.label}
               </a>
             ))}
           </div>
-        </nav>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <a
+            href="#contato"
+            className="rounded-sm bg-zinc-900 px-4 py-2 text-sm font-medium text-zinc-50 shadow-sm ring-1 ring-zinc-900 transition-colors hover:bg-zinc-800"
+          >
+            Solicitar Orçamento
+          </a>
+          <button
+            className="p-1 text-zinc-700 md:hidden"
+            onClick={() => setOpen(!open)}
+            aria-label="Abrir menu"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </div>
+
+      {open && (
+        <div className="border-t border-zinc-900/5 bg-background md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-4 text-sm font-medium text-zinc-600">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="transition-colors hover:text-foreground"
+                onClick={() => setOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
       )}
-    </header>
+    </nav>
   );
 }
